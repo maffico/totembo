@@ -1,0 +1,317 @@
+@import url(fonts.css)
+*
+    margin: 0
+    padding: 0
+    text-decoration: none
+    list-style: none
+    box-sizing: border-box
+    font-family: M4
+    font-weight: 400
+    user-select: none
+
+$black: #323232
+
+@mixin regular-font($fz,$lh,$c)
+    font-size: $fz
+    line-height: $lh
+    color: $c
+    text-transform: capitalize
+
+@mixin bold-font($fz,$lh,$c)
+    font-size: $fz
+    line-height: $lh
+    color: $c
+    text-transform: uppercase
+    font-family: M7
+    font-weight: 700
+
+%logo
+    font-weight: 700
+    font-size: 32px
+    line-height: 23px
+    text-transform: uppercase
+    font-family: M7
+
+%card
+    background: #E1E1E1
+    border-radius: 10px
+    filter: drop-shadow(6px 6px 15px rgba(132, 132, 132, 0.3))
+
+%hover-text
+    color: gold
+    transform: scale(1.02)
+
+body
+    max-width: 1920px
+    width: 100%
+    margin: auto
+    background: #F1F1F1
+
+.container
+    max-width: 1326px
+    width: 100%
+    padding: 0 15px
+    margin: auto
+
+.header-nav
+    display: flex
+    justify-content: space-between
+    padding: 50px 0 20px
+    align-items: center
+    position: relative
+
+    .logo
+        @extend %logo
+        color: $black
+        
+    &::after
+        content: url(../img/divider.svg)
+        display: block
+        position: absolute
+        bottom: 0
+        left: 50%
+        transform: translateX(-50%)
+
+.header-nav-list
+    display: flex
+    gap: 42px
+    align-items: center
+
+    a
+        @include regular-font(18px,22px,$black)
+        transition: 300ms
+        &:hover
+            @extend %hover-text
+
+.header-nav-links
+    display: flex
+    gap: 40px
+    align-items: center
+    margin-left: 129px
+
+    span 
+        @include regular-font(18px,22px,$black)
+        text-transform: uppercase
+
+
+.card
+    display: flex
+    @extend %card
+    position: relative
+    transition: 300ms
+    &:hover
+        transform: scale(1.02)
+
+.header-content
+    padding: 40px 0 60px
+    display: flex
+    justify-content: space-between
+
+    >.card
+        padding: 188px 100px 188px
+        gap: 24px
+        align-items: center
+        max-width: 746px
+
+        .card-content
+            @include regular-font(15px,17px,$black)
+            display: flex
+            flex-direction: column
+            gap: 29px
+            align-items: center
+
+            h3
+                @include bold-font(22px,17px,$black)
+        
+        
+
+.header-content__left
+    h3 
+        @include bold-font(15px,19px,black)
+
+    display: flex
+    flex-direction: column
+    gap: 30px
+
+    .card
+        max-width: 526px
+        padding: 73px 46px 47px 110px
+        gap: 12px
+
+        .card-content
+            display: flex
+            @include regular-font(18px,22px,$black)
+            flex-direction: column
+            gap: 20px
+            align-items: center
+            justify-content: center
+            
+        &:first-child
+            display: flex
+            gap: 43px
+
+.label
+    position: absolute
+    @include regular-font(22px,26px,white)
+    padding: 11px 39px
+    border-radius: 10px
+    background: $black
+    top: 16px
+    left: 22px
+
+.main-title
+    text-align: center
+    @include regular-font(30px,36px,black)    
+    letter-spacing: 2.2px
+    text-transform: uppercase
+    position: relative
+    margin-bottom: 62px
+
+    &::after
+        content: url(../img/divider.svg)
+        display: block
+        position: absolute
+        bottom: -20px
+        left: 50%
+        transform: translateX(-50%)
+
+.leaders
+    >a
+        @include regular-font(30px,36px,$black)
+        margin: 60px auto 60px
+        display: block
+        text-align: center
+
+    .card
+        display: flex
+        flex-direction: column
+        width: 416px
+        padding: 72px 0 39px
+        gap: 20px
+        align-items: center
+        justify-content: center
+        .label
+            color: white
+
+        span
+            @include regular-font(20px,24px,black)  
+            text-transform: none  
+        h3
+            @include bold-font(20px,24px,black) 
+
+.card:hover .leaders-card__hover-icons
+    opacity: 1
+    transform: translateY(0%)
+
+.leaders-card__hover-icons
+    display: flex
+    flex-direction: column
+    gap: 20px
+    position: absolute
+    top: 20px
+    right: 19px
+    opacity: 0
+    transition: 500ms
+    transform: translateY(-20%)
+
+.leaders-cards
+    display: flex
+    flex-wrap: wrap
+    row-gap: 40px
+    justify-content: space-between
+
+.news-cards
+    display: flex
+    justify-content: space-between
+
+
+.news-cards-link
+    position: relative
+    transition: 300ms
+    &:hover
+        transform: scale(1.02)
+
+    .label
+        color: $black
+        background: white
+
+.news-cards-link-content
+    position: absolute
+    max-width: 466px
+    padding: 110px 0 60px 60px
+    bottom: 0
+    left: 0
+
+    h3
+        @include bold-font(22px,27px,white) 
+        text-transform: none 
+    
+    p
+        @include regular-font(18px,22px,#E1E1E1)  
+        text-transform: none  
+        margin: 30px 0 100px
+
+    div
+        display: flex
+        gap: 10px
+
+        span 
+            @include regular-font(16px,19px,white)
+
+.footer
+    background: $black
+    padding: 100px 0 89px
+    margin-top: 60px
+
+    .logo
+        @extend %logo
+        color: white
+        margin-bottom: 40px
+
+    .container
+        display: flex
+        justify-content: space-between
+
+.footer-info
+    margin: 0 110px 0 57px
+
+.footer-title
+    @include regular-font(22px,27px,white)  
+    text-transform: uppercase
+    letter-spacing: 2.2px
+    margin-bottom: 40px
+    
+
+.footer-nav-list 
+    display: flex
+    flex-direction: column
+    gap: 15px
+
+    a
+        @include regular-font(18px,22px,white)
+        transition: 300ms
+        &:hover
+            @extend %hover-text
+ 
+.footer-info-contacts
+    span, a
+        @include regular-font(18px,22px,white)
+        transition: 300ms
+    a:hover
+        @extend %hover-text
+
+    div
+        display: flex
+        gap: 10px
+        margin: 15px 0 15px
+
+.footer-info-socials
+    .footer-title
+        @include regular-font(18px,22px,white)  
+        text-transform: uppercase
+        letter-spacing: 2.5px
+        margin: 60px 0 42px
+
+    div
+        display: flex
+        gap: 26px
